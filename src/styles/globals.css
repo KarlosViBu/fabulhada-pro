@@ -1,0 +1,284 @@
+@import url('https://fonts.googleapis.com/css2?family=Playball&display=swap');
+.kiam {
+  /* position: absolute; */
+  padding: 0 8px; 
+  /* text-align:center; */
+  /* top: 50px; */
+  width: 200px;
+  /* align-self: center; */
+  /* line-height: .5em; */
+  /* font-family: 'Playball', cursive /*
+  font-size: 2em;
+  /* font-weight: 400; */
+  color: #2d190a;
+  /* text-shadow: 3px 2px 5px #fff; */
+  
+
+  /* border-radius: 0 0 1em 1em; */
+  text-shadow: -3px -3px 2px rgba(255,255,255,.7), -2px -2px 2px rgba(255,255,255,.7),
+  -1px -1px 3px rgba(255,255,255,.7), 0px 0px 4px rgba(255,255,255,.7), 
+  1px 1px 4px rgba(255,255,255,.5), 2px 2px 4px rgba(255,255,255,.5);
+  /* 3px 3px 4px rgba(255,255,255,.5);  */
+  /* z-index: 99 !important; */
+  
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.padres{
+  display: flex;
+  background-color: black;
+  
+}
+
+.cardText2 {
+  /* cursor: pointer; */
+  width: 100%;
+  position: absolute;
+  top: 305px;
+  /* overflow: hidden; */
+  text-align: center;
+  /* background: #f0efef; */
+  /* background: transparent; */
+  /* margin-top: -40px; */
+  text-shadow: -3px -3px 2px rgba(255,255,255,1), -2px -2px 2px rgba(255,255,255,1),
+  -1px -1px 3px rgba(255,255,255,1), 0px 0px 4px rgba(255,255,255,1), 
+  1px 1px 4px rgba(255,255,255,1), 2px 2px 4px rgba(255,255,255,1),
+  3px 3px 4px rgba(255,255,255,1);
+}
+
+.MuiCard-roots {
+  
+  border-radius: 50%;
+  transition: .5s;
+  border: 5px solid #a99325;
+  box-shadow: inset 0  5px #e9d362,
+              inset 5px  0px #a99325,
+              inset 0  -5px #e9d362,
+              inset -5px  0px #a99325,
+              0 5px 5px -4px #000,
+              0 0 4px 2px #a99325;
+}
+
+.kzin {
+  position: relative;
+}
+
+.cardText {
+  text-align: center;
+  /* background: #f0efef; */
+  /* background: transparent; */
+  /* margin-top: -40px; */
+  text-shadow: -3px -3px 2px rgba(255,255,255,1), -2px -2px 2px rgba(255,255,255,1),
+  -1px -1px 3px rgba(255,255,255,1), 0px 0px 4px rgba(255,255,255,1), 
+  1px 1px 4px rgba(255,255,255,1), 2px 2px 4px rgba(255,255,255,1),
+  3px 3px 4px rgba(255,255,255,1);
+}
+
+.kper {
+  margin-top: -65px;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.kpre h3 {
+  margin-top:-30px;
+  margin-bottom: 0px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-shadow: none;
+}
+
+
+.cardText2 {
+  text-align: center;
+  left: 50px;
+  
+}
+
+.fadeIn {
+  -webkit-animation-duration: .5s;
+  animation-duration: .5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
+
+@keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+} 
+
+@-webkit-keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+.fadeOut {
+  -webkit-animation-duration: .5s;
+  animation-duration: .5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
+
+@keyframes fadeOut {
+  0% {opacity: 1;}
+  100% {opacity: 0;}
+} 
+
+@-webkit-keyframes fadeOut {
+  0% {opacity: 1;}
+  100% {opacity: 0;}
+}
+
+.bordImg111 {
+  /* border: 10px solid  #e9d362; */
+  /* border: 10px solid  #8f0404; */
+  /* color:#eecc09;
+  color:#d5b70a;
+  color:#0a86f1;
+  color:#095ca4;
+  color:#8d0af1;
+  color:#6609ac;
+  color:#08ec13;
+  color:#06870c;
+  color:#f89ea3; */
+  /* color:#f47a80; */
+  /* color: #ff8c00;
+  color: #e68209; */
+  /* color: rgba(255,255,255,.5); */
+  border: 10px solid  #f1f1f1 inset;
+  color:#daa520;
+  color:#ff0000;
+}
+
+.MuiCard-roots:hover {
+  /* border-radius: 8%; */
+  border: none;
+  box-shadow: none;
+  background: transparent;
+}
+
+.ktitle {
+  font-size: 2em;
+  line-height: 1.2em;
+}
+
+.ktitle2 {
+  font-size: 2em;
+  margin-bottom:-40px;
+}
+
+.titleG { color: green;}
+.titleR { color: #a10404;}
+
+.ksalmodia {
+  padding: 0PX !important;
+  margin: 0PX !important;
+  font-size: 1.15rem !important;
+  line-height: .9rem;
+}
+
+.circular-btn {
+  /* display: flex;
+  justify-content: space-between; */
+  background: #1a50e3 !important;
+  border-radius: 1.5em !important;
+  color: #fff !important;
+  font-size: 1.2em !important;
+  font-weight: 400 !important;
+}
+
+.circular-btn:hover {
+  background-color: #274494 !important;
+}
+
+.circular-btn:disabled {
+  background-color: #5d77be !important;
+
+}
+
+.hisorder {
+  font-size: 1.1em;
+}
+
+.msalmodia {
+  border: 1px solid #000;
+  border-radius: 1.5em;
+  margin-top: 1.5em;
+  height: 2em;
+  line-height: 1.5em;
+  padding: 2px 7px;
+  padding-bottom: 15px;
+  cursor: pointer;
+  transition: .7s;
+}
+
+.msalmodia:hover{
+  border: 1px solid #274494;
+  background: #1a50e3;
+  color: #fff;
+}
+
+
+/* Mobile */
+@media (max-width: 600px) {
+  .kper {
+    margin-top: -45px;
+    font-size: .9rem;
+  }
+    
+  .kpre h3 {
+    margin-top:-25px;
+    font-size: 1.0rem;
+  }
+
+  .ksalmodia {
+    /* padding: 0PX !important; */
+    /* margin: 0PX !important; */
+    font-size: 1rem !important;
+    line-height: 1.2rem;
+  }
+
+  .ktitle {
+    font-size: 1.3em;
+  }
+
+  .ktitle2 {
+    font-size: 1.4em;
+    margin-bottom:-30px;
+  }
+}  
+
+@media (min-width: 601px) and (max-width: 1120px) {
+  .kper {
+    margin-top: -50px;
+    font-size: 1rem;
+  }
+
+  .ksalmodia {
+    /* padding: 0PX !important; */
+    /* margin: 0PX !important; */
+    font-size: 1.1rem !important;
+    line-height: 1.2rem;
+  }
+  
+  .kpre h3 {
+    margin-top:-25px;
+    font-size: 1.1rem;
+  }
+
+  .ktitle {
+    font-size: 1.5em;
+  }
+
+  .ktitle2 {
+    font-size: 1.6em;
+    margin-bottom:-30px;
+  }
+}

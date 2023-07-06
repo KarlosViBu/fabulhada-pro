@@ -1,13 +1,14 @@
 import { GetServerSideProps, NextPage } from 'next';
-import { Icon } from "@iconify/react"
 import { getToken } from 'next-auth/jwt';
 
-import { Box, Card, CardContent, Divider, Grid, Typography, Chip } from '@mui/material';
+import { Box, Card, CardContent, Divider, Grid, Typography, Chip, Tooltip } from '@mui/material';
 
-import { CartList, OrderSummary } from '../../../components/cart';
-import { dbOrders } from '../../../database';
-import { IOrder } from '../../../interfaces';
-import { AdminLayout } from '../../../components/layouts';
+import { CartList, OrderSummary } from '@/components/cart';
+import { dbOrders } from '@/database';
+import { IOrder } from '@/interfaces';
+import { AdminLayout } from '@/components/layouts';
+import OrdersIcon from "@/components/iconos/OrdersIcon";
+import PayIcon from "@/components/iconos/PayIcon";
 
 
 interface Props {
@@ -23,7 +24,7 @@ const OrderPage: NextPage<Props> = ({ order }) => {
             title={`Orden: ${order._id}`}
             // subTitle={`OrdenId: ${order._id}`}
             subTitle={''}
-            icon={<Icon icon="fluent-mdl2:activate-orders" color="#154" width="35" />}
+            icon={<OrdersIcon fill="#154" width="35" />}
         >
             <Grid container spacing={2} className='fadeIn'>
                 <Grid item xs={12} sm={7}>
@@ -71,28 +72,32 @@ const OrderPage: NextPage<Props> = ({ order }) => {
                                     {
                                         order.isPaid
                                             ? (
+                                                <Tooltip title="Regresa a historial" arrow>
                                                 <Chip
-                                                    sx={{ my: 2, flex: 1 }}
+                                                    sx={{ my: 2, flex: 0 }}
                                                     label="Orden ya fue pagada"
                                                     variant='outlined'
                                                     color="success"
                                                     component="a"
                                                     href='/admin/orders'
                                                     clickable
-                                                    icon={<Icon icon="mdi:recurring-payment" color="#154" width="35" />}
+                                                    icon={<PayIcon fill="#154" width="35" />}
                                                 />
+                                                </Tooltip>
 
                                             ) : (
+                                                <Tooltip title="Regresa a historial" arrow>
                                                 <Chip
-                                                    sx={{ my: 2, flex: 1 }}
+                                                    sx={{ my: 2, flex: 0 }}
                                                     label="Pendiente de pago"
                                                     variant='outlined'
                                                     color="error"
                                                     component="a"
                                                     href='/admin/orders'
                                                     clickable
-                                                    icon={<Icon icon="mdi:recurring-payment" color="#a32" width="35" />}
+                                                    icon={<PayIcon fill="#a32" width="35" />}
                                                 />
+                                                </Tooltip>
                                             )
                                     }
                                 </Box>

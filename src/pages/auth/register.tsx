@@ -7,9 +7,9 @@ import NextLink from 'next/link';
 import { useForm } from 'react-hook-form';
 import { Box, Button, Chip, Grid, Link, TextField, Typography } from '@mui/material';
 import { AuthLayout } from '../../components/layouts'
-import { Icon } from '@iconify/react';
 import { validations } from '@/utils';
 import { AuthContext } from '@/context';
+import ClearIcon from "@/components/iconos/ClearIcon";
 
 type FormData = {
    name: string,
@@ -102,7 +102,7 @@ const RegisterPage = () => {
                      <Chip
                         label="usuario / contraseña incorrectos"
                         color="error"
-                        icon={<Icon icon="mdi:error-outline" width="25" />}
+                        icon={<ClearIcon width="25" />}
                         className="fadeIn"
                         sx={{ display: showError ? 'flex' : 'none' }}
                      />

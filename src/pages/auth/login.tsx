@@ -5,12 +5,11 @@ import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 
 import { Box, Button, Chip, Divider, Grid, Link, TextField, Typography } from '@mui/material';
-import { Icon } from '@iconify/react';
 import { useForm } from 'react-hook-form';
 
 import { AuthLayout } from '../../components/layouts'
 import { validations } from '../../utils';
-
+import ClearIcon from "@/components/iconos/ClearIcon";
 
 type FormData = {
    email: string,
@@ -65,7 +64,7 @@ const LoginPage = () => {
                      <Chip
                         label="usuario / contraseña incorrectos"
                         color="error"
-                        icon={<Icon icon="mdi:error-outline" width="25" />}
+                        icon={<ClearIcon width="25" />}
                         className="fadeIn"
                         sx={{ display: showError ? 'flex' : 'none' }}
                      />

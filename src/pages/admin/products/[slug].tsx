@@ -1,5 +1,4 @@
 import { ChangeEvent, FC, SetStateAction, useEffect, useRef, useState } from 'react';
-import { Icon } from '@iconify/react';
 import { GetServerSideProps } from 'next'
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
@@ -11,6 +10,9 @@ import { IProduct } from '@/interfaces';
 import { dbProducts } from '@/database';
 import { fabulhadaApi } from '@/api';
 import { Product } from '@/models';
+import CategorIcon from "@/components/iconos/CategorIcon";
+import SaveIcon from "@/components/iconos/SaveIcon";
+import UploadIcon from "@/components/iconos/UploadIcon";
 
 
 const validTypes = ['hada', 'elfo', 'angel', 'buda', 'duende', 'gnomo', 'mago', 'genio', 'brujas', 'elementos', 'sirenas', 'miticos', 'zodiaco', 'lamparas', 'fuentes', 'bisuteria', 'recipiente', 'portasahumerio'];
@@ -181,14 +183,14 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
         <AdminLayout
             title={'Producto'}
             subTitle={`Editando: ${product.personage}`}
-            icon={<Icon icon="carbon:category-new-each" color="#019" width="35" />}
+            icon={<CategorIcon fill="#019" width="35" />}
         >
             <form onSubmit={handleSubmit(onSubmit)}>
                 <Box display='flex' justifyContent='end' sx={{ mb: 1 }}>
                     <Button
                         // color="secondary"
                         className='circular-btn'
-                        startIcon={<Icon icon="fluent-mdl2:save" color="#fff" width="25" />}
+                        startIcon={<SaveIcon fill="#fff" width="30" />}
                         sx={{ width: '150px' }}
                         type="submit"
                         disabled={isSaving}
@@ -443,7 +445,7 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
                             <Button
                                 className='circular-btn' size='large'
                                 fullWidth
-                                startIcon={<Icon icon="line-md:upload-loop" color="#fff" width="35" />}
+                                startIcon={<UploadIcon fill="#fff" width="35" />}
                                 sx={{ mb: 3 }}
                                 onClick={() => fileInputRef.current?.click()}
                             >

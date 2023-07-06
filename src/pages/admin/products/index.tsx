@@ -1,27 +1,26 @@
-import { Icon } from "@iconify/react"
 import { GetServerSideProps } from 'next';
-import NextLink from 'next/link';
 import { getToken } from 'next-auth/jwt';
 
-import { Avatar, Box, Button, CardMedia, Grid, Link, Typography } from '@mui/material'
+import { Avatar, Box, Button, Grid, Typography } from '@mui/material'
 import { DataGrid, GridColDef, GridRenderCellParams } from '@mui/x-data-grid';
 import useSWR from 'swr';
 
 import { AdminLayout } from '@/components/layouts'
 import { IProduct } from '@/interfaces';
 import { currency } from "@/utils";
-import { green } from "@mui/material/colors";
-
+import CategorIcon from "@/components/iconos/CategorIcon";
+import CrearIcon from "@/components/iconos/CrearIcon";
 
 const columns: GridColDef[] = [
    {
       field: 'img',
       headerName: 'Foto',
+      width: 60,
       renderCell: ({ row }: GridRenderCellParams) => {
          return (
             <a href={`/admin/products/${row.slug}`} target="_blank" rel="noreferrer">
                <Avatar
-                  variant="rounded"
+                  variant="square"
                   sx={{ width: 35, height: 50 }} //, bgcolor:'#154' }}
                   alt={ row.personage }
                   src={ row.img }
@@ -73,18 +72,16 @@ const ProductsPage = () => {
       <AdminLayout
          title={`Productos`} // (${data?.length})`}
          subTitle={'Mantenimiento de productos'}
-         icon={<Icon icon="carbon:category-new-each" color="#019" width="30" />}
+         icon={<CategorIcon fill="#019" width="30" />}
       >
          <Box display='flex' justifyContent='space-between' sx={{ mb: 2 }}>
             <Typography variant='h2' sx={{ mb: 1 }}>{ 'Mantenimiento de productos' }</Typography>
             <Button
-               // startIcon={<Icon icon="mdi:tooltip-add-outline" color="#fff" width="35" />}
-               // startIcon={<Icon icon="icon-park:add-one"  width="40" />}
-               startIcon={<Icon icon="ic:twotone-add-to-drive" color="#fff" width="25" />}
+               startIcon={<CrearIcon fill="#fff" width="25" />}
                href="/admin/products/new"
-               className="circular-btn" 
+               className="circular-btn"
             >
-               Crear producto
+               Crear
             </Button>
          </Box>
 

@@ -1,7 +1,6 @@
 import { FC } from 'react';
 
 import { Grid, Card, CardContent, Typography } from '@mui/material';
-import { Icon } from "@iconify/react"
 
 interface Props {
     title: string | number;
@@ -19,7 +18,7 @@ export const SummaryTile:FC<Props> = ({ title, subTitle, icon }) => {
             </CardContent>
             <CardContent sx={{ flex: '1 0 auto', display: 'flex', flexDirection: 'column' }}>
                 <Typography variant='h1'>{ title }</Typography>
-                <Typography variant='h2'>{ subTitle }</Typography>
+                <Typography variant='h6'>{ subTitle }</Typography>
             </CardContent>
         </Card>
         

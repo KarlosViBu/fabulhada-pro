@@ -6,13 +6,11 @@ import { useRouter } from 'next/router';
 
 import { PayPalButtons } from '@paypal/react-paypal-js';
 
-import { Link, Box, Card, CardContent, Divider, Grid, Typography, Chip, CircularProgress } from '@mui/material';
-// import { CreditCardOffOutlined, CreditScoreOutlined } from '@mui/icons-material';
+import { Link, Box, Card, CardContent, Divider, Grid, Typography, Chip, CircularProgress, Tooltip } from '@mui/material';
 
 import { ShopLayout } from '../../components/layouts/ShopLayout';
 import { CartList, OrderSummary } from '../../components/cart';
-import { Icon } from '@iconify/react';
-
+import PayIcon from "@/components/iconos/PayIcon";
 
 import { dbOrders } from '../../database';
 import { IOrder } from '../../interfaces';
@@ -60,15 +58,15 @@ const OrderPage: NextPage<Props> = ({ order }) => {
 
          {
             order.isPaid
-            //    ? (
-            //       <Typography color='#06870c' variant='h1' component='h1'>Orden: {order._id}</Typography>
-            //    ) :
-            //    (
-            //       <Typography color='error' variant='h1' component='h1'>Orden: {order._id}</Typography>
-            //    )
-            ? 
-               ( <h1 className='ktitle titleG'>Orden: {order._id} </h1> ) 
-            :  ( <h1 className='ktitle titleR'>Orden: {order._id} </h1> )
+               //    ? (
+               //       <Typography color='#06870c' variant='h1' component='h1'>Orden: {order._id}</Typography>
+               //    ) :
+               //    (
+               //       <Typography color='error' variant='h1' component='h1'>Orden: {order._id}</Typography>
+               //    )
+               ?
+               (<h1 className='ktitle titleG'>Orden: {order._id} </h1>)
+               : (<h1 className='ktitle titleR'>Orden: {order._id} </h1>)
          }
 
          <Grid container spacing={2} mt={1}>
@@ -83,7 +81,7 @@ const OrderPage: NextPage<Props> = ({ order }) => {
                         <Typography >{order.numberOfItems > 1 ? 'productos' : 'producto'}</Typography>
                      </Box>
                      <Box display='flex' justifyContent='space-between'>
-                        <Typography >{ order.createdAt?.substring(0,10) }</Typography>
+                        <Typography >{order.createdAt?.substring(0, 10)}</Typography>
                         <Typography >{order.numberOfItems} </Typography>
                      </Box>
                      <Divider sx={{ my: 1 }} />
@@ -136,16 +134,18 @@ const OrderPage: NextPage<Props> = ({ order }) => {
                            {
                               order.isPaid
                                  ? (
-                                    <>
+                                    <Tooltip title="Regresa a historial" arrow>
                                        <Chip
                                           sx={{ my: 2 }}
                                           label="Orden ya fue pagada"
                                           variant='outlined'
                                           color="success"
-                                          icon={<Icon icon="mdi:recurring-payment" color="#06870c" width="35" />}
+                                          component="a"
+                                          href={`/orders/history}`}
+                                          clickable
+                                          icon={<PayIcon fill="#06870c" width="35" />}
                                        />
-                                       {/* <Icon icon="mdi:recurring-payment" color="#06870c" width="40" /> */}
-                                    </>
+                                    </Tooltip>
 
                                  ) : (
                                     <>

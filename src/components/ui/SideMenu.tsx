@@ -1,20 +1,21 @@
 'use client'
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { AuthContext, UiContext } from "@/context";
 import { useRouter } from "next/router";
 
 import { Box, Divider, Drawer, IconButton, Input, InputAdornment, List, ListItem, ListItemIcon, ListItemText, ListSubheader } from "@mui/material"
-import { Icon } from '@iconify/react';
 
-import ClearIcon from "../iconos/ClearIcon";
 import SearchIcon from "../iconos/SearchIcon";
 import UserIcon from "../iconos/UserIcon";
 import OrdersIcon from "../iconos/OrdersIcon";
-
 import KeyIcon from "../iconos/KeyIcon";
 import ExitIcon from "../iconos/ExitIcon";
 import CategorIcon from "../iconos/CategorIcon";
 import UsersIcon from "../iconos/UsersIcon";
+import MagicIcon from "../iconos/MagicIcon";
+
+import DashboardIcon from "../iconos/DashboardIcon";
+
 // import { AccountCircleOutlined, AdminPanelSettings, CategoryOutlined, ConfirmationNumberOutlined, EscalatorWarningOutlined, FemaleOutlined, LoginOutlined, MaleOutlined, SearchOutlined, VpnKeyOutlined } from "@mui/icons-material"
 
 export const SideMenu = () => {
@@ -69,13 +70,35 @@ export const SideMenu = () => {
                      }
                   />
                </ListItem>
+         
+               {/* <div>
+               <ListItem>
+               
+                  <CategorIcon/>
+               
+                  <AbundanceIcon />
+                  <CubIcon/> 
+                  <HealthIcon/>
+               </ListItem>
 
+               <ListItem>
+                  <MagicIcon/>
+               </ListItem>
+               <ListItem>
+                  <MaskIcon/>
+               </ListItem>
+               <ListItem>
+                  <SunIcon/>
+                  <ZodiacIcon/>
+
+               </ListItem>
+               </div> */}
                {
                   isLoggedIn && (
                      <>
                         <ListItem button>
                            <ListItemIcon>
-                              <UserIcon width={35} fill="#33496a" />
+                              <UserIcon width={40} fill="#33496a" />
                            </ListItemIcon>
                            <ListItemText primary={kperfil} />
                         </ListItem>
@@ -85,7 +108,7 @@ export const SideMenu = () => {
                            onClick={() => navigateTo('/orders/history') }
                         >
                            <ListItemIcon>
-                              <OrdersIcon width={20} fill="#33496a" />
+                              <OrdersIcon width={25} fill="#33496a" />
                            </ListItemIcon>
                            <ListItemText primary={'Mis Ordenes'} />
                         </ListItem>
@@ -100,9 +123,7 @@ export const SideMenu = () => {
                   onClick={() => navigateTo('/category/amor-armonia')}
                >
                   <ListItemIcon>
-                     {/* <LoveIcon width={30} fill="#203656" /> */}
-                     <Icon icon="line-md:sunny-filled-loop-to-moon-filled-loop-transition" color="#f89ea3" width="30" />
-                     {/* <Icon icon="line-md:sun-rising-twotone-loop" color="#f47a80" width="35" /> */}
+                     <MagicIcon  />
                   </ListItemIcon>
                   <ListItemText primary={'Amor y Armonía'} />
                </ListItem>
@@ -113,9 +134,7 @@ export const SideMenu = () => {
                   onClick={() => navigateTo('/category/abundancia-prosperidad')}
                >
                   <ListItemIcon>
-                     {/* <AbundanceIcon width={30} fill="#203656" /> */}
-                     {/* <Icon icon="line-md:sun-rising-twotone-loop" color="#ffd700" width="35" /> */}
-                     <Icon icon="line-md:sunny-filled-loop-to-moon-filled-loop-transition" color="#eecc09" width="30" />
+                     <MagicIcon fill="#ffd700" />
                   </ListItemIcon>
                   <ListItemText primary={'Abundancia y Prosperidad'} />
                </ListItem>
@@ -126,9 +145,7 @@ export const SideMenu = () => {
                   onClick={() => navigateTo('/category/salud-vitalidad')}
                >
                   <ListItemIcon>
-                     {/* <Icon icon="line-md:sun-rising-twotone-loop" color="#08ec13" width="35" /> */}
-                     <Icon icon="line-md:sunny-filled-loop-to-moon-filled-loop-transition" color="#06870c" width="30" />
-                     {/* <HealthIcon width={30} fill="#203656" /> */}
+                     <MagicIcon fill="#06870c" />
                   </ListItemIcon>
                   <ListItemText primary={'Salud y Vitalidad'} />
                </ListItem>
@@ -139,9 +156,7 @@ export const SideMenu = () => {
                   onClick={() => navigateTo('/category/sabiduria-poder')}
                >
                   <ListItemIcon>
-                     {/* <MagicIcon width={30} fill="#203656" /> */}
-                     {/* <Icon icon="line-md:sun-rising-twotone-loop" color="#0a86f1" width="35" /> */}
-                     <Icon icon="line-md:sunny-filled-loop-to-moon-filled-loop-transition" color="#095ca4" width="30" />
+                     <MagicIcon fill="#095ca4" />
                   </ListItemIcon>
                   <ListItemText primary={'Sabiduria y Poder'} />
                </ListItem>
@@ -152,8 +167,7 @@ export const SideMenu = () => {
                   onClick={() => navigateTo('/category/naturaleza-zodiaco')}
                >
                   <ListItemIcon>
-                     {/* <ZodiacIcon width={40} fill="#203656" /> */}
-                     <Icon icon="line-md:sunny-filled-loop-to-moon-filled-loop-transition" color="#6609ac" width="30" />
+                     <MagicIcon fill="#6609ac" />
                   </ListItemIcon>
                   <ListItemText primary={'Naturaleza y Zodíaco'} />
                </ListItem>
@@ -164,8 +178,7 @@ export const SideMenu = () => {
                   onClick={() => navigateTo('/category/proteccion-talismanes')}
                >
                   <ListItemIcon>
-                     {/* <HomeIcon width={30} fill="#203656" /> */}
-                     <Icon icon="line-md:sunny-filled-loop-to-moon-filled-loop-transition" color="#e68209" width="30" />
+                     <MagicIcon fill="#e68209" />
                   </ListItemIcon>
                   <ListItemText primary={'Protección Hogar'} />
                </ListItem>
@@ -203,7 +216,7 @@ export const SideMenu = () => {
                            onClick={() => navigateTo('/admin/')}
                         >
                            <ListItemIcon>
-                              <Icon icon="streamline:interface-dashboard-layout-3-app-application-dashboard-home-layout" color="#019" width="25" />
+                              <DashboardIcon stroke="#033"/>
                            </ListItemIcon>
                            <ListItemText primary={'Dashboard'} />
                         </ListItem>
@@ -213,7 +226,7 @@ export const SideMenu = () => {
                            onClick={() => navigateTo('/admin/products')}
                         >
                            <ListItemIcon>
-                              <CategorIcon />
+                              <CategorIcon width={30}/>
                            </ListItemIcon>
                            <ListItemText primary={'Productos'} />
                         </ListItem>

@@ -28,12 +28,10 @@ export const ItemCounter:FC<Props> = ({ currentValue, updatedQuantity, maxValue 
   return (
     <Box display='flex' alignItems='center'>
         <IconButton onClick={ () => addOrRemove(-1) }>
-            {/* <Icon icon="ic:round-remove-circle-outline" color="#154" width="30" /> */}
             <LessIcon />
         </IconButton>
         <Typography sx={{ width: 45, textAlign:'center' }}> {currentValue} </Typography>
         <IconButton onClick={ () => addOrRemove(+1) }>
-            {/* <Icon icon="ic:round-add-circle-outline" color="#154" width="30" /> */}
             <AddIcon />
         </IconButton>
     </Box>

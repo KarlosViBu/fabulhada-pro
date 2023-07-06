@@ -1,10 +1,7 @@
 
-import { Icon } from "@iconify/react"
 import { GetServerSideProps } from 'next'
 import { getToken } from 'next-auth/jwt';
 
-
-// import { ConfirmationNumberOutlined } from '@mui/icons-material'
 import { Chip, Grid, Link } from '@mui/material'
 import { DataGrid, GridColDef, GridRenderCellParams } from '@mui/x-data-grid';
 import useSWR from 'swr';
@@ -12,6 +9,7 @@ import useSWR from 'swr';
 import { AdminLayout } from '@/components/layouts'
 import { IOrder, IUser } from '@/interfaces';
 import { currency } from "@/utils";
+import OrdersIcon from "@/components/iconos/OrdersIcon";
 
 
 const columns: GridColDef[] = [
@@ -19,7 +17,6 @@ const columns: GridColDef[] = [
         field: 'id',
         headerName: 'Ver orden',
         width: 105,
-        // cellClassName: 'hisorder',
         renderCell: ({ row }: GridRenderCellParams) => {
             return row.isPaid
             ? (
@@ -104,7 +101,7 @@ const OrdersPage = () => {
         <AdminLayout
             title={'Ordenes'}
             subTitle={''}
-            icon={<Icon icon="fluent-mdl2:activate-orders" color="#154" width="35" />}
+            icon={<OrdersIcon fill="#154" width="35" />}
         >
             <Grid container className='fadeIn'>
                 <Grid item xs={12} sx={{ height: 415, width: '100%' }}>

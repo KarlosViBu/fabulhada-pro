@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { Icon } from "@iconify/react"
 import { GetServerSideProps } from 'next'
 import { getToken } from 'next-auth/jwt';
 
@@ -11,7 +10,7 @@ import { Grid, Select, MenuItem } from '@mui/material';
 import { AdminLayout } from '@/components/layouts'
 import { IUser } from '@/interfaces';
 import { fabulhadaApi } from '@/api';
-
+import UsersIcon from "../../components/iconos/UsersIcon";
 
 const UsersPage = () => {
 
@@ -89,7 +88,7 @@ const UsersPage = () => {
         title={'Usuarios'} 
         subTitle={'Mantenimiento de usuarios'}
         // icon={ <PeopleOutline /> }
-        icon={ <Icon icon="system-uicons:users" color="#019" width="45" />}
+        icon={ <UsersIcon fill="#019" width="45" />}
     >
 
         <Grid container className='fadeIn'>

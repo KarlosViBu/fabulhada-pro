@@ -2,11 +2,11 @@ import { useContext, useState } from 'react';
 import { useRouter } from 'next/router';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 
-import { Box, Button, Chip, Grid, Typography } from '@mui/material';
+import { Box, Button, Card, CardMedia, Chip, Grid, Typography } from '@mui/material';
 import { CartContext } from '@/context';
 
 import { ShopLayout } from '@/components/layouts';
-import { ProductSlideshow, SizeSelector } from '@/components/products';
+// import { ProductSlideshow, SizeSelector } from '@/components/products';
 
 import { ItemCounter } from '@/components/ui/ItemCounter';
 import { dbProducts } from '@/database';
@@ -65,9 +65,16 @@ const ProductPage: NextPage<Props> = ({ product }) => {
       <Grid container spacing={3}>
 
         <Grid item xs={12} sm={7}>
-          <ProductSlideshow
+          {/* <ProductSlideshow
             images={product.images}
-          />
+          /> */}
+          <Card>
+                              <CardMedia
+                                 image={ product.images[2] }
+                                 component='img'
+                                 sx={{ borderRadius: '10px',  with: '200px', height:'300px' }}
+                              />
+                           </Card>
         </Grid>
 
         <Grid item xs={12} sm={5}>
@@ -90,11 +97,11 @@ const ProductPage: NextPage<Props> = ({ product }) => {
                 // maxValue={ product.inStock > 10 ? 10: product.inStock }
                 maxValue={5}
               />
-              <SizeSelector
+              {/* <SizeSelector
                 kinds={product.kind}
                 selectedSize={tempCartProduct.kind}
                 onSelectedSize={selectedSize}
-              />
+              /> */}
             </Box>
 
 

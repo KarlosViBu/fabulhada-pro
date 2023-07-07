@@ -3,10 +3,10 @@ import type { AppProps } from 'next/app'
 import { SessionProvider } from "next-auth/react"
 import { PayPalScriptProvider } from "@paypal/react-paypal-js"
 import { AuthProvider, CartProvider, UiProvider } from '@/context'
+import { CssBaseline, ThemeProvider } from "@mui/material";
 
 import { SWRConfig } from 'swr'
 import { lightTheme } from '@/themes'
-import { ThemeProvider } from '@mui/material'
 
 export default function App({ Component, pageProps }: AppProps) {
 
@@ -22,8 +22,8 @@ export default function App({ Component, pageProps }: AppProps) {
                <AuthProvider>
                   <CartProvider>
                      <UiProvider>
-                        {/* <ThemeProvider theme={kTheme}> */}
                            <ThemeProvider theme={lightTheme}>
+                           <CssBaseline />
                            <Component {...pageProps} />
                         </ThemeProvider>
                      </UiProvider>

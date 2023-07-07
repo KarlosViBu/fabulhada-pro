@@ -101,6 +101,7 @@ const OrdersPage = () => {
         <AdminLayout
             title={'Ordenes'}
             subTitle={''}
+            pou={2}
             icon={<OrdersIcon fill="#154" width="35" />}
         >
             <Grid container className='fadeIn'>

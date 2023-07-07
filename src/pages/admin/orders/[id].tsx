@@ -24,6 +24,7 @@ const OrderPage: NextPage<Props> = ({ order }) => {
             title={`Orden: ${order._id}`}
             // subTitle={`OrdenId: ${order._id}`}
             subTitle={''}
+            pou={2}
             icon={<OrdersIcon fill="#154" width="35" />}
         >
             <Grid container spacing={2} className='fadeIn'>
@@ -117,7 +118,6 @@ const OrderPage: NextPage<Props> = ({ order }) => {
 
 // You should use getServerSideProps when:
 // - Only if you need to pre-render a page whose data must be fetched at request time
-
 
 export const getServerSideProps: GetServerSideProps = async ({ req, query }) => {
 

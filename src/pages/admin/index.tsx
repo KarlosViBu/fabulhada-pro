@@ -63,6 +63,7 @@ const DashboardPage = () => {
         <AdminLayout
             title='Dashboard'
             subTitle='Estadisticas generales'
+            pou={0}
             icon={<DashboardIcon stroke="#033"/>}
             // <Icon icon="streamline:interface-dashboard-layout-3-app-application-dashboard-home-layout" color="#019" width="25" />}
         >

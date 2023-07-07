@@ -1,9 +1,11 @@
 import { ChangeEvent, FC, SetStateAction, useEffect, useRef, useState } from 'react';
 import { GetServerSideProps } from 'next'
+import { getToken } from 'next-auth/jwt';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 
-import { Box, Button, capitalize, Card, CardActions, CardMedia, Checkbox, Chip, Divider, FormControl, FormControlLabel, FormGroup, FormLabel, Grid, InputAdornment, ListItem, Paper, Radio, RadioGroup, TextField } from '@mui/material';
+import { Box, Button, capitalize, Card, CardActions, CardMedia, Checkbox, Chip, Divider, FormControl, FormControlLabel, FormGroup, FormLabel, Grid, InputAdornment, ListItem, Paper, Radio, RadioGroup, TextField, Typography } from '@mui/material';
+import Swal from 'sweetalert2';
 
 import { AdminLayout } from '@/components/layouts'
 import { IProduct } from '@/interfaces';
@@ -46,6 +48,8 @@ interface Props {
 
 const ProductAdminPage: FC<Props> = ({ product }) => {
 
+    let ksave = ' '
+
     // Cloudinary
     const [url, updateUrl] = useState();
     const [error, updateError] = useState();
@@ -70,28 +74,28 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
         defaultValues: product
     })
 
-    
+
     useEffect(() => {
         const subscription = watch((value, { name, type }) => {
             let kpersonage = ' '
             let kfeature = '_'
 
             if (name === 'personage' || name === 'feature') {
-                    kpersonage = value.personage?.trim()
+                kpersonage = value.personage?.trim()
                     .replaceAll(' ', '_')
                     .replaceAll("'", '')
                     .toLocaleLowerCase() || '';
-            // }
-            // if (name === 'feature' && value.feature !=='') {
-                    kfeature = value.feature?.trim()
+                // }
+                // if (name === 'feature' && value.feature !=='') {
+                kfeature = value.feature?.trim()
                     .replaceAll(' ', '_')
                     .replaceAll("'", '')
                     .toLocaleLowerCase() || '';
-                    const newSlug = value.type?.trim() + '_' + kfeature + '_' + kpersonage + '_' + value.category?.trim()
-                    setValue('slug', newSlug);
+                const newSlug = value.type?.trim() + '_' + kfeature + '_' + kpersonage + '_' + value.category?.trim()
+                setValue('slug', newSlug);
             }
 
-            });
+        });
         return () => subscription.unsubscribe();
     }, [watch, setValue])
 
@@ -166,10 +170,24 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
 
             // console.log({data});
             if (!form._id) {
+                // Actualizado
+                ksave = "Creado";
+
                 router.replace(`/admin/products/${form.slug}`);
             } else {
+                // Creado
+                ksave = "Actualizado";
                 setIsSaving(false)
             }
+            if (ksave.length > 0)
+                Swal.fire({
+                    // position: 'top-end',
+                    width:'20em',
+                    icon: 'success',
+                    title: ksave,
+                    showConfirmButton: false,
+                    timer: 2500
+                })
 
 
         } catch (error) {
@@ -182,11 +200,14 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
     return (
         <AdminLayout
             title={'Producto'}
-            subTitle={`Editando: ${product.personage}`}
+            subTitle={' '}
+            pou={1}
             icon={<CategorIcon fill="#019" width="35" />}
         >
+        <div>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <Box display='flex' justifyContent='end' sx={{ mb: 1 }}>
+                <Box display='flex' justifyContent='space-between' sx={{ mb: 1 }}>
+                    <Typography variant='h1' sx={{ mb: 1 }}>{`Editando: ${product.personage}`}</Typography>
                     <Button
                         // color="secondary"
                         className='circular-btn'
@@ -500,32 +521,87 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
 
                 </Grid>
             </form>
+            </div>
         </AdminLayout>
     )
 }
 
+
 // You should use getServerSideProps when:
 // - Only if you need to pre-render a page whose data must be fetched at request time
 
+// export const getServerSideProps: GetServerSideProps = async ({ req, query }) => {
+
+//     const validRoles = ['admin']
+//     const session: any = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
+//     // console.log({session});
+
+//     if (session && validRoles.includes(session.user.role)) {
+//         // console.log(session.user.role);
+
+//         const { slug = '' } = query;
+
+//         let product: IProduct | null;
+
+//         if (slug === 'new') {
+//             // crear un producto
+//             const tempProduct = JSON.parse(JSON.stringify(new Product()));
+//             delete tempProduct._id;
+//             tempProduct.images = ['img1.jpg', 'img2.jpg'];
+//             product = tempProduct;
+
+//         } else {
+//             product = await dbProducts.getProductBySlug(slug.toString());
+//         }
+
+//         if (!product) {
+//             return {
+//                 redirect: {
+//                     destination: '/admin/products',
+//                     permanent: false,
+//                 }
+//             }
+//         }
+
+//         return {
+//             props: {
+//                 product
+//             }
+//         }
+//     }
+//     else {
+//         return {
+//             redirect: {
+//                 destination: '/',
+//                 permanent: false
+//             }
+//         }
+//     }
+
+
+// }
+
+
+
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-
-    const { slug = '' } = query;
-
+    
+    const { slug = ''} = query;
+    
     let product: IProduct | null;
 
-    if (slug === 'new') {
+    if ( slug === 'new' ) {
         // crear un producto
-        const tempProduct = JSON.parse(JSON.stringify(new Product()));
+        const tempProduct = JSON.parse( JSON.stringify( new Product() ) );
         delete tempProduct._id;
-        tempProduct.images = ['img1.jpg', 'img2.jpg'];
+        tempProduct.images = ['img1.jpg','img2.jpg'];
         product = tempProduct;
 
     } else {
         product = await dbProducts.getProductBySlug(slug.toString());
     }
 
-    if (!product) {
+    if ( !product ) {
         return {
             redirect: {
                 destination: '/admin/products',
@@ -533,7 +609,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
             }
         }
     }
-
+    
 
     return {
         props: {

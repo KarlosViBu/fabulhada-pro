@@ -18,7 +18,7 @@ const columns: GridColDef[] = [
       width: 60,
       renderCell: ({ row }: GridRenderCellParams) => {
          return (
-            <a href={`/admin/products/${row.slug}`} target="_blank" rel="noreferrer">
+            <a href={`/admin/products/${row.slug}`} rel="noreferrer">
                <Avatar
                   variant="square"
                   sx={{ width: 35, height: 50 }} //, bgcolor:'#154' }}
@@ -71,11 +71,12 @@ const ProductsPage = () => {
    return (
       <AdminLayout
          title={`Productos`} // (${data?.length})`}
-         subTitle={'Mantenimiento de productos'}
+         subTitle={' '}
+         pou={1}
          icon={<CategorIcon fill="#019" width="30" />}
       >
-         <Box display='flex' justifyContent='space-between' sx={{ mb: 2 }}>
-            <Typography variant='h2' sx={{ mb: 1 }}>{ 'Mantenimiento de productos' }</Typography>
+         <Box display='flex' justifyContent='space-between' sx={{ mb: 1 }}>
+            <Typography variant='h2' sx={{ mb: 1 }}>{ 'Mantenimiento' }</Typography>
             <Button
                startIcon={<CrearIcon fill="#fff" width="25" />}
                href="/admin/products/new"

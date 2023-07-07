@@ -87,6 +87,7 @@ const UsersPage = () => {
     <AdminLayout 
         title={'Usuarios'} 
         subTitle={'Mantenimiento de usuarios'}
+        pou={3}
         // icon={ <PeopleOutline /> }
         icon={ <UsersIcon fill="#019" width="45" />}
     >

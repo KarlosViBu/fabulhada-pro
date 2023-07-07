@@ -18,7 +18,7 @@ export default function App({ Component, pageProps }: AppProps) {
                value={{
                   fetcher: (resource, init) => fetch(resource, init).then(res => res.json())
                }}
-            >
+               >
                <AuthProvider>
                   <CartProvider>
                      <UiProvider>
@@ -34,4 +34,9 @@ export default function App({ Component, pageProps }: AppProps) {
          </PayPalScriptProvider>
       </SessionProvider>
    )
+   // TODO
+   // verificar en las rutas url 
+   // Estado y tipo de usuario
 }
+
+
